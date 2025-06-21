@@ -1,0 +1,165 @@
+%пакеты
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{polyglossia}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{hyperref}
+\RequirePackage{lipsum}  
+\RequirePackage{listings}
+\RequirePackage{xecyr}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{pdfpages}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tocloft}
+\RequirePackage{caption}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{fp}
+
+
+%гиперссылки
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black
+}
+
+\lstset{
+  basicstyle=\footnotesize\ttfamily\linespread{1}\selectfont,
+  commentstyle=\color{green!50!black},
+  keywordstyle=\color{blue},
+  stringstyle=\color{purple},
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  tabsize=4,
+  showtabs=false,
+  frame=single,
+  breaklines=true,
+  linewidth=\linewidth,
+  xleftmargin=0pt,       % отступ слева
+  xrightmargin=0pt,
+  breakatwhitespace=true,
+  backgroundcolor=\color{gray!10},
+  escapeinside={(*@}{@*)},  % if you want to add LaTeX within your code
+  morekeywords={as, def, from, import},
+  language={[Sharp]C}
+}
+\renewcommand\lstlistingname{Листинг}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\DeclareCaptionFont{custom}{\fontsize{12pt}{14pt}\selectfont}
+\captionsetup{font=custom}
+
+\DeclareCaptionLabelSeparator{longdash}{~---~}
+\DeclareCaptionFont{fourteenpt}{\fontsize{14pt}{16pt}\selectfont\bfseries}
+\captionsetup[table]{justification   = raggedright, singlelinecheck = false, labelsep=longdash}
+\captionsetup[lstlisting]{justification = raggedright,singlelinecheck = false, labelsep=longdash}
+\captionsetup[figure]{
+  name=Рисунок,
+  labelsep=longdash
+}
+
+%мат. операторы
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\artanh}{artanh}
+
+% Page numbering
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\normalfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyheadoffset{0mm}
+\fancyfootoffset{0mm}
+\setlength{\headheight}{17pt}
+
+% Sections font size
+\titleformat*{\section}{\fontsize{14pt}{16pt} \selectfont \bfseries}
+\titleformat*{\subsection}{\fontsize{14pt}{16pt} \selectfont \bfseries}
+
+
+\renewcommand{\@dotsep}{1} % меньше значение — плотнее точки
+%toc font size
+\setcounter{tocdepth}{2}
+\renewcommand{\cftsecfont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\cftsecpagefont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\cftsubsecfont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\cftsubsecpagefont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\cftsubsubsecfont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\cftsubsubsecpagefont}{\fontsize{12}{14.4}\selectfont}
+\renewcommand{\l@section}{\@dottedtocline{1}{0em}{4.5em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{0em}{2em}}
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+
+% Отступы слева
+\setlength{\cftsecindent}{0pt}          % Раздел без отступа
+\setlength{\cftsubsecindent}{2em}       % Подраздел с отступом на 2 знака (~2em)
+\renewcommand{\cftdotsep}{1}  % интервал точек
+\setlength{\cftbeforesecskip}{0pt}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand\figurename{Рисунок}
+
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+
+
+
+% Ширина области под номер
+\setlength{\cftsecnumwidth}{2.3em}      % Ширина под номер раздела
+\setlength{\cftsubsecnumwidth}{3.8em}   % Ширина под номер подраздела
+
+%язык
+\setmainlanguage{russian}
+
+%шрифты
+\setmonofont{Courier New}
+\setmainfont{Times New Roman}
+\newfontfamily\cyrillicfont{Times New Roman}
+\newfontfamily\cyrillicfonttt{Courier New}
+
+%отступы
+\parindent 1.25cm
+\linespread{1.5}
+
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+%чтобы формулки с норм шрифтом были
+\DeclareSymbolFont{euleroperators}{U}{}{m}{n}
+\SetSymbolFont{euleroperators}{bold}{U}{}{b}{n}
+
+\makeatletter
+\renewcommand{\operator@font}{\mathgroup\symeuleroperators}
+\makeatother
+
+\setlist[itemize]{
+  label=-,
+  labelindent=1cm, 
+  labelwidth=0pt, 
+  itemindent=1.25cm, 
+  leftmargin=*, 
+  align=left
+}
+
+\titleformat{\section}
+  {\normalfont\bfseries\centering }
+  {\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\normalfont\bfseries}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\normalfont\bfseries}
+  {\thesubsubsection}{0.7em}{}

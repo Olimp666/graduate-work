@@ -1,0 +1,149 @@
+\RequirePackage{multicol}
+\RequirePackage{datetime2}
+\RequirePackage{calc}
+
+\newcommand{\uline}[1]{\underline{#1\vphantom{lp}}}
+
+\newcommand{\lastyeardigits}{\the\numexpr\year-2000\relax}
+\newcommand{\currentmonth}{
+	\ifcase\month
+	\or января
+	\or февраля
+	\or марта
+	\or апреля
+	\or мая
+	\or июня
+	\or июля
+	\or августа
+	\or сентября
+	\or октября
+	\or ноября
+	\or декабря
+	\fi
+}
+
+\newlength{\currentmonthwidth}
+\settowidth{\currentmonthwidth}{\currentmonth}
+
+\newlength{\currentdaywidth}
+\settowidth{\currentdaywidth}{\the\day}
+
+\newlength{\currentyearwidth}
+\settowidth{\currentyearwidth}{\lastyeardigits}
+
+\newlength{\hwmonth}
+\setlength{\hwmonth}{ (80pt - \currentmonthwidth) / 2}
+
+\newlength{\hwday}
+\setlength{\hwday}{ (30pt - \currentdaywidth) / 2}
+
+\newlength{\hwyear}
+\setlength{\hwyear}{ (20pt - \currentyearwidth) / 2}
+
+\newcommand{\docdate}{
+	<<\uline{\hspace{\hwday}\the\day\hspace{\hwday}}>>\uline{\hspace{\hwmonth}\currentmonth\hspace{\hwmonth}} 20\uline{\hspace{\hwyear}\lastyeardigits\hspace{\hwyear}} г.
+}
+
+\newcommand{\textunderset}[2]{\begin{tabular}[t]{@{}c@{}}#2\\[-12pt]\scriptsize#1\end{tabular}}
+
+\newcommand{\usersign}[1]{
+    \textunderset{\textit{Ф.И.О}}{\uline{#1}}
+    \textunderset{\textit{подпись}}{\uline{\hspace{80pt}}}
+}
+
+\newcommand{\fefutitlepage}[7]{
+
+    
+    \thispagestyle{empty}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=1]{pictures/fefulogo.pdf}
+    \end{figure}
+
+    \begin{center}
+
+        {\fontsize{11}{11}\selectfont МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}
+
+        \vspace*{-12pt}
+    
+        {\fontsize{11}{11}\selectfont Федеральное государственное автономное образовательное учреждение высшего образования}
+    
+        \vspace*{-10pt}
+    
+        \textbf{\guillemotleft Дальневосточный федеральный университет\guillemotright}
+    
+        \vspace*{-10pt}
+    
+        (ДВФУ)
+
+        \vspace*{-10pt}
+
+        \rule{\textwidth}{3pt}
+        
+        \vspace*{-24pt}
+
+        \rule{\textwidth}{1pt}
+
+        \vspace{10pt}
+
+        \textbf{ИНСТИТУТ МАТЕМАТИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
+
+        \textbf{(ШКОЛА)}
+
+        \vspace{10pt}
+
+        \textbf{Департамент математического и компьютерного моделирования}
+
+        \vspace{20pt}
+        
+        \textbf{#1}
+
+        \vspace{15pt}
+        
+        #2
+
+        \vspace{10pt}
+
+        Направление подготовки
+
+        \vspace*{-6pt}
+
+        #3
+
+    \end{center}
+
+    \begin{multicols}{2}
+        
+        \vfill\null
+
+        \columnbreak
+
+        Выполнил студент гр.
+
+        #4
+
+        \usersign{#5}
+
+        Проверил #6
+
+        \usersign{#7}
+
+        \docdate
+
+
+    \end{multicols}
+
+    \vfill
+
+    \begin{center}
+
+        \textbf{г. Владивосток}
+
+        \textbf{2025}
+
+    \end{center}
+
+    \pagebreak
+
+}
